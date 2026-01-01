@@ -2,7 +2,18 @@
 
 A modern Xposed/Lsposed module for monitoring Android device activity and media playback, built with Kotlin and Material Design 3.
 
-## Features
+[![Android CI](https://github.com/gongfuture/sleepy-lsposed/workflows/Android%20CI/badge.svg)](https://github.com/gongfuture/sleepy-lsposed/actions)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com)
+[![API](https://img.shields.io/badge/API-26%2B-brightgreen.svg)](https://android-arsenal.com/api?level=26)
+
+[English](#english) | [简体中文](#简体中文)
+
+---
+
+## English
+
+### Features
 
 - 🎯 **Foreground App Monitoring**: Tracks the currently active application (by name, not package)
 - 🎵 **Media Playback Detection**: Monitors music and video playback from any media app
@@ -152,6 +163,13 @@ app/src/main/
 2. Check your API URL is correct
 3. Review logs for network errors
 4. Ensure the service is running (check notification)
+
+## Documentation
+
+- **[Building Guide](BUILD.md)**: How to build from source
+- **[Contributing Guide](CONTRIBUTING.md)**: How to contribute
+- **[Architecture](ARCHITECTURE.md)**: Technical architecture details
+- **[Changelog](CHANGELOG.md)**: Version history
 
 ## Credits
 

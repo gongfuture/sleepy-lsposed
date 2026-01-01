@@ -2,6 +2,11 @@
 
 一个现代化的 Xposed/Lsposed 模块，用于监控 Android 设备活动和媒体播放，使用 Kotlin 和 Material Design 3 构建。
 
+[![Android CI](https://github.com/gongfuture/sleepy-lsposed/workflows/Android%20CI/badge.svg)](https://github.com/gongfuture/sleepy-lsposed/actions)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com)
+[![API](https://img.shields.io/badge/API-26%2B-brightgreen.svg)](https://android-arsenal.com/api?level=26)
+
 [English](README.md) | 简体中文
 
 ## 功能特性
@@ -154,6 +159,13 @@ app/src/main/
 2. 检查 API URL 是否正确
 3. 查看日志中的网络错误
 4. 确保服务正在运行（检查通知）
+
+## 文档
+
+- **[构建指南](BUILD.md)**: 如何从源码构建（英文）
+- **[贡献指南](CONTRIBUTING.md)**: 如何贡献代码（英文）
+- **[架构文档](ARCHITECTURE.md)**: 技术架构详情（英文）
+- **[变更日志](CHANGELOG.md)**: 版本历史（英文）
 
 ## 致谢
 
