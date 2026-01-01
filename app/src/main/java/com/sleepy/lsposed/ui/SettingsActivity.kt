@@ -6,29 +6,28 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sleepy.lsposed.BuildConfig
 import com.sleepy.lsposed.R
 import com.sleepy.lsposed.config.ConfigManager
-import com.sleepy.lsposed.databinding.ActivitySettingsBinding
 import com.sleepy.lsposed.service.SleepyMonitorService
 
 /**
  * Main settings activity with Material Design
  */
 class SettingsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySettingsBinding
     private lateinit var configManager: ConfigManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_settings)
 
         configManager = ConfigManager(this)
 
-        setSupportActionBar(binding.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
         supportActionBar?.title = getString(R.string.app_name)
 
         if (savedInstanceState == null) {
