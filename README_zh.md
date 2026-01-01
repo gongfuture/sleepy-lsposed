@@ -162,10 +162,15 @@ app/src/main/
 
 ## 文档
 
-- **[构建指南](BUILD.md)**: 如何从源码构建（英文）
+📚 **完整文档套件**
+
+- **[README.md](README.md)**: 英文主文档
+- **[README_zh.md](README_zh.md)**: 中文文档（当前文档）
+- **[构建指南](BUILD.md)**: 从源码完整构建说明（英文）
 - **[贡献指南](CONTRIBUTING.md)**: 如何贡献代码（英文）
-- **[架构文档](ARCHITECTURE.md)**: 技术架构详情（英文）
-- **[变更日志](CHANGELOG.md)**: 版本历史（英文）
+- **[架构文档](ARCHITECTURE.md)**: 技术架构和设计细节（英文）
+- **[实现总结](IMPLEMENTATION.md)**: 实现摘要对比需求（英文）
+- **[变更日志](CHANGELOG.md)**: 版本历史和发布说明（英文）
 
 ## 致谢
 

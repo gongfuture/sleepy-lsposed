@@ -166,10 +166,15 @@ app/src/main/
 
 ## Documentation
 
-- **[Building Guide](BUILD.md)**: How to build from source
-- **[Contributing Guide](CONTRIBUTING.md)**: How to contribute
-- **[Architecture](ARCHITECTURE.md)**: Technical architecture details
-- **[Changelog](CHANGELOG.md)**: Version history
+📚 **Complete Documentation Suite**
+
+- **[README.md](README.md)**: Main documentation (you are here)
+- **[README_zh.md](README_zh.md)**: 中文文档
+- **[Building Guide](BUILD.md)**: Complete build instructions from source
+- **[Contributing Guide](CONTRIBUTING.md)**: How to contribute to the project
+- **[Architecture](ARCHITECTURE.md)**: Technical architecture and design details
+- **[Implementation](IMPLEMENTATION.md)**: Implementation summary vs requirements
+- **[Changelog](CHANGELOG.md)**: Version history and release notes
 
 ## Credits
 
