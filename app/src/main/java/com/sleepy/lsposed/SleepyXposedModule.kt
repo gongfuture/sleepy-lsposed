@@ -1,11 +1,11 @@
 package com.sleepy.lsposed
 
-import android.app.AndroidAppHelper
 import android.content.Context
+import de.robv.android.xposed.AndroidAppHelper
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedHelpers
-import de.robv.android.xposed.callbacks.XC_LoadPackage
+import de.robv.android.xposed.XC_LoadPackage
 
 /**
  * Main Xposed module entry point
