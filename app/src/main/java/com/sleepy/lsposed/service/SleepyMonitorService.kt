@@ -51,23 +51,29 @@ class SleepyMonitorService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        configManager = ConfigManager(this)
-        apiClient = SleepyApiClient()
-        mediaMonitor = MediaMonitor(this)
+        try {
+            configManager = ConfigManager(this)
+            apiClient = SleepyApiClient()
+            mediaMonitor = MediaMonitor(this)
 
-        createNotificationChannel()
-        startForeground(NOTIFICATION_ID, createNotification())
+            createNotificationChannel()
+            startForeground(NOTIFICATION_ID, createNotification())
 
-        // Register receiver for foreground app changes
-        val filter = IntentFilter(ACTION_FOREGROUND_APP_CHANGED)
-        ContextCompat.registerReceiver(
-            this,
-            foregroundAppReceiver,
-            filter,
-            ContextCompat.RECEIVER_NOT_EXPORTED
-        )
+            // Register receiver for foreground app changes
+            val filter = IntentFilter(ACTION_FOREGROUND_APP_CHANGED)
+            ContextCompat.registerReceiver(
+                this,
+                foregroundAppReceiver,
+                filter,
+                ContextCompat.RECEIVER_NOT_EXPORTED
+            )
 
-        startMonitoring()
+            startMonitoring()
+        } catch (e: Exception) {
+            android.util.Log.e("SleepyMonitorService", "Error in onCreate", e)
+            // Service will stop gracefully
+            stopSelf()
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {

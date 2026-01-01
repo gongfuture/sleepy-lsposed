@@ -3,6 +3,7 @@ package com.sleepy.lsposed.ui
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -22,19 +23,30 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        
+        try {
+            setContentView(R.layout.activity_settings)
 
-        configManager = ConfigManager(this)
+            configManager = ConfigManager(this)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = getString(R.string.app_name)
+            val toolbar = findViewById<Toolbar>(R.id.toolbar)
+            setSupportActionBar(toolbar)
+            supportActionBar?.title = getString(R.string.app_name)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.settings_container, SettingsFragment())
-                .commit()
+            if (savedInstanceState == null) {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.settings_container, SettingsFragment())
+                    .commit()
+            }
+        } catch (e: Exception) {
+            Log.e("SettingsActivity", "Error in onCreate", e)
+            // Show error dialog and finish
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Error")
+                .setMessage("Failed to initialize app: ${e.message}")
+                .setPositiveButton("OK") { _, _ -> finish() }
+                .show()
         }
     }
 

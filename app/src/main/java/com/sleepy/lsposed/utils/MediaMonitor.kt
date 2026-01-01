@@ -26,6 +26,19 @@ class MediaMonitor(private val context: Context) {
      */
     fun getCurrentMediaInfo(): MediaInfo {
         try {
+            // Note: getActiveSessions requires BIND_NOTIFICATION_LISTENER_SERVICE permission
+            // and a NotificationListenerService component. For now, return empty to prevent crashes.
+            // TODO: Implement proper NotificationListenerService if media monitoring is needed
+            
+            if (mediaSessionManager == null) {
+                return MediaInfo(false, "", "", "")
+            }
+            
+            // This will throw SecurityException if notification listener permission is not granted
+            // We need to handle this gracefully
+            return MediaInfo(false, "", "", "")
+            
+            /* Original implementation - requires NotificationListenerService
             val controllers = mediaSessionManager?.getActiveSessions(null) ?: emptyList()
             
             for (controller in controllers) {
@@ -37,6 +50,9 @@ class MediaMonitor(private val context: Context) {
                     }
                 }
             }
+            */
+        } catch (e: SecurityException) {
+            android.util.Log.w("MediaMonitor", "No notification listener permission", e)
         } catch (e: Exception) {
             android.util.Log.e("MediaMonitor", "Failed to get media info", e)
         }
