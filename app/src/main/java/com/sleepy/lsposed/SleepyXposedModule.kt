@@ -53,6 +53,7 @@ class SleepyXposedModule : IXposedHookLoadPackage {
                             ) as? String
                             
                             if (packageName != null) {
+                                XposedLogger.d("Detected foreground app: $packageName")
                                 // Notify our service about the foreground app change
                                 notifyForegroundAppChanged(packageName)
                             }
@@ -71,7 +72,10 @@ class SleepyXposedModule : IXposedHookLoadPackage {
         try {
             val context = AndroidAppHelper.currentApplication() as? Context
             if (context != null) {
+                XposedLogger.d("Notifying service about app: $packageName")
                 ForegroundAppTracker.updateForegroundApp(context, packageName)
+            } else {
+                XposedLogger.w("No application context available")
             }
         } catch (e: Throwable) {
             XposedLogger.e("Failed to notify foreground app change", e)

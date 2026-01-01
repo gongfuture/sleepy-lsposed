@@ -20,6 +20,8 @@ object ForegroundAppTracker {
         // Get app name from package name
         val appName = getAppName(context, packageName)
         
+        XposedLogger.d("Sending broadcast: $appName ($packageName)")
+        
         // Notify the service
         val intent = Intent("com.sleepy.lsposed.FOREGROUND_APP_CHANGED").apply {
             setPackage("com.sleepy.lsposed")
@@ -29,6 +31,7 @@ object ForegroundAppTracker {
         
         try {
             context.sendBroadcast(intent)
+            XposedLogger.d("Broadcast sent successfully")
         } catch (e: Exception) {
             XposedLogger.e("Failed to send broadcast", e)
         }

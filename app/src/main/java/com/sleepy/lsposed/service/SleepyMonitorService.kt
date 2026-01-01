@@ -39,6 +39,7 @@ class SleepyMonitorService : Service() {
             if (intent?.action == ACTION_FOREGROUND_APP_CHANGED) {
                 currentPackageName = intent.getStringExtra("package_name") ?: ""
                 currentAppName = intent.getStringExtra("app_name") ?: ""
+                android.util.Log.d("SleepyMonitorService", "Foreground app changed: $currentAppName ($currentPackageName)")
             }
         }
     }
@@ -84,14 +85,23 @@ class SleepyMonitorService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        stopMonitoring()
-        unregisterReceiver(foregroundAppReceiver)
-        serviceScope.cancel()
-
-        // Send final "not using" status
-        serviceScope.launch {
-            sendDeviceStatus(false, "Service Stopped")
+        
+        // Send final "not using" status BEFORE cancelling scope
+        try {
+            serviceScope.launch {
+                sendDeviceStatus(false, "")
+            }
+        } catch (e: Exception) {
+            android.util.Log.e("SleepyMonitorService", "Error sending final status", e)
         }
+        
+        stopMonitoring()
+        try {
+            unregisterReceiver(foregroundAppReceiver)
+        } catch (e: Exception) {
+            android.util.Log.e("SleepyMonitorService", "Error unregistering receiver", e)
+        }
+        serviceScope.cancel()
     }
 
     private fun startMonitoring() {
@@ -162,6 +172,9 @@ class SleepyMonitorService : Service() {
         // Add app name
         if (currentAppName.isNotEmpty()) {
             parts.add("前台应用: $currentAppName")
+        } else {
+            // Log warning if no app name (hooks might not be working)
+            android.util.Log.w("SleepyMonitorService", "No current app name - Xposed hooks may not be active. Did you reboot after enabling the module?")
         }
 
         // Add media info if in combined mode
