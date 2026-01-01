@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.sleepy.lsposed.R
 import com.sleepy.lsposed.config.ConfigManager
 import com.sleepy.lsposed.config.MediaMode
@@ -59,11 +60,12 @@ class SleepyMonitorService : Service() {
 
         // Register receiver for foreground app changes
         val filter = IntentFilter(ACTION_FOREGROUND_APP_CHANGED)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(foregroundAppReceiver, filter, RECEIVER_NOT_EXPORTED)
-        } else {
-            registerReceiver(foregroundAppReceiver, filter)
-        }
+        ContextCompat.registerReceiver(
+            this,
+            foregroundAppReceiver,
+            filter,
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
 
         startMonitoring()
     }
