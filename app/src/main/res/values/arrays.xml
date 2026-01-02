@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="xposed_scope">
+        <item>android</item>
+        <item>com.android.systemui</item>
+    </string-array>
+
+    <string-array name="media_mode_entries">
+        <item>@string/pref_media_mode_combined</item>
+        <item>@string/pref_media_mode_standalone</item>
+    </string-array>
+
+    <string-array name="media_mode_values">
+        <item>combined</item>
+        <item>standalone</item>
+    </string-array>
+</resources>

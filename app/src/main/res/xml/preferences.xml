@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/settings_server"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="api_url"
+            android:title="@string/pref_api_url"
+            android:summary="@string/pref_api_url_summary"
+            android:defaultValue="@string/pref_api_url_default"
+            android:inputType="textUri"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="secret"
+            android:title="@string/pref_secret"
+            android:summary="@string/pref_secret_summary"
+            android:defaultValue=""
+            android:inputType="textPassword"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_device"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="device_id"
+            android:title="@string/pref_device_id"
+            android:summary="@string/pref_device_id_summary"
+            android:defaultValue=""
+            android:inputType="text"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="device_name"
+            android:title="@string/pref_device_name"
+            android:summary="@string/pref_device_name_summary"
+            android:defaultValue=""
+            android:inputType="text"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_behavior"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="check_interval"
+            android:title="@string/pref_check_interval"
+            android:summary="@string/pref_check_interval_summary"
+            android:defaultValue="@string/pref_check_interval_default"
+            android:inputType="number"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="bypass_same"
+            android:title="@string/pref_bypass_same"
+            android:summary="@string/pref_bypass_same_summary"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="battery_info"
+            android:title="@string/pref_battery_info"
+            android:summary="@string/pref_battery_info_summary"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_media"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            android:key="media_enabled"
+            android:title="@string/pref_media_enabled"
+            android:summary="@string/pref_media_enabled_summary"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <ListPreference
+            android:key="media_mode"
+            android:title="@string/pref_media_mode"
+            android:summary="@string/pref_media_mode_summary"
+            android:entries="@array/media_mode_entries"
+            android:entryValues="@array/media_mode_values"
+            android:defaultValue="combined"
+            android:dependency="media_enabled"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="media_device_id"
+            android:title="@string/pref_media_device_id"
+            android:summary="@string/pref_media_device_id_summary"
+            android:defaultValue=""
+            android:inputType="text"
+            android:dependency="media_enabled"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="media_device_name"
+            android:title="@string/pref_media_device_name"
+            android:summary="@string/pref_media_device_name_summary"
+            android:defaultValue=""
+            android:inputType="text"
+            android:dependency="media_enabled"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
